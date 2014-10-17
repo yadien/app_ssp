@@ -1,0 +1,19 @@
+catatan ssp
+---------------------------
+1. database - dbssp
+2. setting configuration
+	- config
+	- database
+	- route = home
+	
+	
+3. halaman login //oke
+4. halaman beranda atau home 
+	- menu oke//
+	- icon beranda 
+	- isi berand ??
+	
+5. halaman master
+	
+
+	
