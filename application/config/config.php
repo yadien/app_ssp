@@ -19,7 +19,22 @@ $config['base_url'] .= "://".$_SERVER['HTTP_HOST'];
 $config['base_url'] .= preg_replace('@/+$@','',dirname($_SERVER['SCRIPT_NAME'])).'/';
 */
 
-$config['base_url']	= 'http://localhost/app_ssp/';
+//$config['base_url']	= 'http://localhost/app_ssp/';
+$config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
+$config['base_url'] .= "://".$_SERVER['HTTP_HOST'];
+$config['base_url'] .= preg_replace('@/+$@','',dirname($_SERVER['SCRIPT_NAME'])).'/';
+
+$config['assets_path'] = $config['base_url'].'assets/';
+$config['css_path'] = $config['assets_path'].'css/';
+$config['bootstrap_path'] = $config['assets_path'].'bootstrap311/';
+$config['fontawesome_path'] = $config['assets_path'].'fontawesome/';
+$config['jqgrid_path'] = $config['assets_path'].'jqgrid46/';
+$config['datepicker_path'] = $config['assets_path'].'datepicker2/';
+$config['jqui_path'] = $config['assets_path'].'jqueryui/';
+$config['jquery'] = $config['assets_path'].'jquery.1.11.js';
+$config['less'] = $config['assets_path'].'less-1.7.0.min.js';
+
+$config['chosen'] = $config['assets_path'].'chosen.jquery.js';
 
 /*
 |--------------------------------------------------------------------------
