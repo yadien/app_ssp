@@ -40,6 +40,7 @@ class Auth extends CI_Controller {
 	
 			
 			print json_encode ($rtn);
+			redirect('home');
 			exit();
 		}
 		$this->load->view('login', $this->data);
