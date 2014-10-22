@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Aplikasi Aset - PTDQM</title>
+    <title>Aplikasi SSP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Plugin css -->
     <link href="<?php echo $this->config->item('bootstrap_path'); ?>less/bootstrap.less" rel="stylesheet/less" media="screen">

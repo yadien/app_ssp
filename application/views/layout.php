@@ -15,6 +15,8 @@
 	<link href="<?=base_url();?>assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 	<link href="<?=base_url();?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 	<link href="<?=base_url();?>assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>	
+	<link href="<?php echo $this->config->item('jqgrid_path'); ?>css/ui.jqgrid.css" rel="stylesheet" media="screen">
+    <link href="<?php echo $this->config->item('jqgrid_path'); ?>css/pepper-grinder/jquery.ui.theme.css" rel="stylesheet" media="screen">
 	<!-- END GLOBAL MANDATORY STYLES -->
 	
 	<!-- BEGIN THEME STYLES --> 
@@ -49,7 +51,9 @@
 	<script src="<?=base_url();?>assets/plugins/bootstrap-toastr/toastr.min.js"></script>
 	<link href="<?=base_url();?>assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="<?=base_url();?>assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
-
+	<script src="<?php echo $this->config->item('jqgrid_path'); ?>js/i18n/grid.locale-en.js"></script>
+    <script src="<?php echo $this->config->item('jqgrid_path'); ?>js/jquery.jqGrid.min.js"></script>
+	
 	<script src="<?=base_url();?>assets/scripts/app.js"></script>
 	<script src="<?=base_url();?>assets/scripts/HH.js"></script>
 	<script>
@@ -59,6 +63,7 @@
 		});
 	</script>
 	<!-- END JAVASCRIPTS -->
+	<?php ((isset($jqgrid)) ? $this->load->view("jqgrid/".$jqgrid) : ""); ?>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
