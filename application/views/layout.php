@@ -93,8 +93,37 @@
 						<li><?=anchor('master/skpd', 'Master Jenis Pajak');?></li>
 						<li><?=anchor('master/Pejabat', 'Master Pengguna Anggaran');?></li>
 						<li><?=anchor('master/account', 'Master Pemungut Pajak');?></li>
+						<li><?=anchor('master/user', 'Master User');?></li>
 					</ul>
 				</li>
+				<li <?=(isset ($navbar) AND $navbar == 'master') ? 'class=active':'';?>>
+					<a data-hover="dropdown" data-close-others="true" class="dropdown-toggle" href="javascript:void();">
+						<span class="selected"></span>Tools
+						<i class="icon-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li><?=anchor('master/backup', 'Backup');?></li>
+						<li><?=anchor('master/restore', 'Restore');?></li>
+						<li><?=anchor('master/setting', 'Setting');?></li>
+						<li><?=anchor('master/info', 'Kelola Informasi');?></li>
+					</ul>
+				</li>
+				<li <?=(isset ($navbar) AND $navbar == 'master') ? 'class=active':'';?>>
+					<a data-hover="dropdown" data-close-others="true" class="dropdown-toggle" href="javascript:void();">
+						<span class="selected"></span>Transaksi
+						<i class="icon-angle-down"></i>
+					</a>					
+				</li>
+				<li <?=(isset ($navbar) AND $navbar == 'master') ? 'class=active':'';?>>
+					<a data-hover="dropdown" data-close-others="true" class="dropdown-toggle" href="javascript:void();">
+						<span class="selected"></span>Laporan
+						<i class="icon-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<!--kosong -->
+					</ul>
+				</li>
+				
 				<?php } ?>
 				
 				</ul>					

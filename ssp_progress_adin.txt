@@ -9,7 +9,7 @@ catatan ssp
 	
 3. halaman login //oke
 4. halaman beranda atau home 
-	- menu oke//
+	- menu 
 	- icon beranda 
 	- isi berand ??
 	
