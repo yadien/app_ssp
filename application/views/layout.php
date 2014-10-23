@@ -158,6 +158,19 @@
 		</div>
 		<!-- END EMPTY PAGE SIDEBAR -->
 		<?=$body;?>
+		<?php if ( ! empty( $komponen_top ) &&  is_array( $komponen_top )): ?>
+			<?php foreach($komponen_top as $isi): ?>
+				<?php $this->load->view("komponen/".$isi); ?>
+			<?php endforeach; ?>
+		<?php endif; ?>
+
+		<?php ((isset($template)) ? $this->load->view("template/".$template) : ""); ?>
+		
+		<?php if (! empty( $komponen_bottom ) &&  is_array( $komponen_top )): ?>
+			<?php foreach($komponen_bottom as $isi): ?>
+				<?php $this->load->view("komponen/".$isi); ?>
+			<?php endforeach; ?>
+		<?php endif; ?>
 	</div>
 	<!-- END CONTAINER -->
 	<!-- BEGIN FOOTER -->

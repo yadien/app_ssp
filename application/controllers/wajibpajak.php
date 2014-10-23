@@ -93,7 +93,7 @@ class Wajibpajak extends CI_Controller {
 		#	 fungsi : mengupdate data jqgrid ke server
 		
 		if ( empty ( $mode ) ):
-			$this->load->view('usetemplate',$game);
+			$this->load->view('layout',$game);
 		endif;
 		if ( $mode == 'load' ):
 			$this->load->view('jqgrid/table_load_jqgrid',$game);
