@@ -14,11 +14,6 @@ class App_Model extends CI_Model {
 		return $this->db->get($table, $limit, $offset);
 	}
 	
-	public function getAllDataVilla($limit,$offset)
-	{
-		return $this->db->query("select a.*, b.status_villa from tbl_villa a left join tbl_status_v b on a.id_status = b.id_status",$limit,$offset);
-	}
-	
 	public function getSelectedDataLimited($table,$data,$limit,$offset)
 	{
 		return $this->db->get_where($table, $data, $limit, $offset);

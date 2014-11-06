@@ -6,22 +6,24 @@ class Wajibpajak extends CI_Controller {
 	{
 		$mode = $this->uri->segment(3);
 		$game['masterdata'] = '';											#--- ACTIVATE Navbar Class="active". Just declare it with no value. sesuai dengan menu
-		$game['template'] = 'twocolumn';								#--- pilihan template. anda bisa pilih twocolumn / onecolumn
-		// $game['komponen_top'] = array('forcelogin','navbar');						#--- Tambahkan html komponen di bagian paling atas halaman / sebelum template
+		$game['template'] = 'newfromadin';								#--- pilihan template. anda bisa pilih twocolumn / onecolumn
+		$game['komponen_top'] = array('beginheader');						#--- Tambahkan html komponen di bagian paling atas halaman / sebelum template
+		$game['komponen_bottom'] = array('beginfooter');						#--- Tambahkan html komponen di bagian paling atas halaman / sebelum template
 		// $game['menu'] = array('masterdata');									#--- Tambahkan interface menu di sidebar
+		$game['profile'] = '';
 		
 		#------------------------------------------------------------------------------------------------------------
 		#	Ambil data tambahan jika dibutuhkan dari database 
 		#------------------------------------------------------------------------------------------------------------
 		
-	//	$jamwajib = $this->core_model->getAllData('m_jamwajib')->result();
+		$game['jenispajak'] = $this->app_model->getAllData('tbl_jp')->result();
 		
 		#------------------------------------------------------------------------------------------------------------
 		#	jQGrid variable dimulai dari sini 							KETERANGAN
 		#------------------------------------------------------------------------------------------------------------
 		
-		$game['interface'] = array('grid','datepicker_jqui');								#--- Tambahkan interface grid di template kolom 2
-		$game['jqgrid'] = 'table_interface_jqgrid';						#--- meload javascript jqgrid interface
+		$game['interface'] = array('form_ssp');								#--- Tambahkan interface grid di template kolom 2
+		// $game['jqgrid'] = 'table_interface_jqgrid';						#--- meload javascript jqgrid interface
 		$game['table'] = 'tbl_wp';										#--- mendefinisikan nama table yang dipanggil ke jqgrid
 		$game['kolom'] = $this->_getkolom($game['table']);				#--- memanggil private fungsi _getkolom. lihat fungsi _getkolom utk ket lebih lanjut
 		$game['jqgrid_at_name'] = array(								#--- mendefinisikan nama kolom pada jqgrid
@@ -74,10 +76,11 @@ class Wajibpajak extends CI_Controller {
 			'id_status'		=> array( 'm_status-idid'	=>	'status' ),  #	'id_lembaga'	=> array( 'm_lembaga-idid'			=>	'desc' ),
 			'id_jamwajib'	=> array( 'm_jamwajib-idid'	=>	'jam_wajib' ),  #	'id_lembaga'	=> array( 'm_lembaga-idid'			=>	'desc' ),
 		);																  #	 ^ Sbg Foreign Key			^ Nama table-Primary Key	 ^ Kolom yg ingin diambil valuenya
-		$game['gridsubgrid'] = array(
+		/*$game['gridsubgrid'] = array(
 			//'table' => 'i_keluarga',
 			//'kolom' => $this->_getkolom('i_keluarga'),
 		);
+		*/
 		#----------------------------------------------------------------------------------------------------------------------------
 		# load variabel into url untuk menghasilkan jqgird
 		#----------------------------------------------------------------------------------------------------------------------------
@@ -93,7 +96,7 @@ class Wajibpajak extends CI_Controller {
 		#	 fungsi : mengupdate data jqgrid ke server
 		
 		if ( empty ( $mode ) ):
-			$this->load->view('layout',$game);
+			$this->load->view('usetemplate',$game);
 		endif;
 		if ( $mode == 'load' ):
 			$this->load->view('jqgrid/table_load_jqgrid',$game);
