@@ -3,8 +3,7 @@ class Auth extends CI_Controller {
 	var $data;
 	
 	function __construct(){ 
-		parent::__construct(); 
-	
+		parent::__construct();
 	}
 	
 	public function index()
