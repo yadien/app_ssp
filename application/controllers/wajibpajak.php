@@ -11,18 +11,19 @@ class Wajibpajak extends CI_Controller {
 		$game['komponen_bottom'] = array('beginfooter');						#--- Tambahkan html komponen di bagian paling atas halaman / sebelum template
 		// $game['menu'] = array('masterdata');									#--- Tambahkan interface menu di sidebar
 		$game['profile'] = '';
+		$game['judul'] = 'INPUT SSP';
 		
 		#------------------------------------------------------------------------------------------------------------
 		#	Ambil data tambahan jika dibutuhkan dari database 
 		#------------------------------------------------------------------------------------------------------------
 		
-		$game['jenispajak'] = $this->app_model->getAllData('tbl_jp')->result();
+		// $game['jenispajak'] = $this->app_model->getAllData('tbl_jp')->result();
 		
 		#------------------------------------------------------------------------------------------------------------
 		#	jQGrid variable dimulai dari sini 							KETERANGAN
 		#------------------------------------------------------------------------------------------------------------
 		
-		$game['interface'] = array('form_ssp');								#--- Tambahkan interface grid di template kolom 2
+		$game['interface'] = array('form_ssp2');								#--- Tambahkan interface grid di template kolom 2
 		// $game['jqgrid'] = 'table_interface_jqgrid';						#--- meload javascript jqgrid interface
 		$game['table'] = 'tbl_wp';										#--- mendefinisikan nama table yang dipanggil ke jqgrid
 		$game['kolom'] = $this->_getkolom($game['table']);				#--- memanggil private fungsi _getkolom. lihat fungsi _getkolom utk ket lebih lanjut

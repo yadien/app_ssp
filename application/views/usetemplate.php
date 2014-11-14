@@ -2,7 +2,13 @@
 <html>
   <head>
     <title>Aplikasi SSP</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+	<title>Aplikasi SSP</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<meta name="MobileOptimized" content="320">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->        
 	<link href="<?=base_url();?>assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 	<link href="<?=base_url();?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -74,8 +80,6 @@
 			<?php $this->load->view("komponen/".$isi); ?>
 		<?php endforeach; ?>
 	<?php endif; ?>
-	<script>
-		$('#menuolahgaji').popover();
-	</script>
+
   </body>
 </html>
