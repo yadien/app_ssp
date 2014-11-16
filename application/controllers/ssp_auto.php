@@ -47,6 +47,7 @@ class Ssp_auto extends CI_Controller {
 		");
 		$kode_akun = $jpjoin->row()->kd_akun;
 		$kode_jenis = $jpjoin->row()->kd_jenis;
+		$nama_jenis = $jpjoin->row()->nm_jenis;
 		
 		//CEK JENIS BELANJA
 		if ($belanjaid == 1) //---> BELANJA BARANG
@@ -70,28 +71,69 @@ class Ssp_auto extends CI_Controller {
 					$pph = $nilai * 0.015;
 				}
 			}
-			if(isset($ppn)) { echo "<a class='btn btn-info btn-sm'>PPN (411211-100)</a> "; }
-			if(isset($pph)) { echo "<a class='btn btn-danger btn-sm'>PPH ({$kode_akun}-{$kode_jenis})</a>"; }
+			if($ppn>0) { echo "<a class='btn btn-info btn-sm'>PPN (411211-100)</a> "; }
+			if(isset($pph)) { echo "<a class='btn btn-danger btn-sm'>PPh pasal 22 ({$kode_akun}-{$kode_jenis})</a>"; }
 		}
-		if ($belanjaid == 4) //---> BELANJA NON KONSTRUKSI
+		if ($belanjaid == 3) //---> JASA KONSTRUKSI
+		{
+			if ($nilai < 1000000) 
+			{
+				$ppn = 0;
+			}
+			if ($nilai >= 1000000) 
+			{
+				$ppn = 100/110 * $nilai * 0.1;
+			}
+			$pph = ($nilai - 0.1); // PPh 4 (2)
+			if($ppn>0) { echo "<a class='btn btn-info btn-sm'>PPN (411211-100)</a> "; }
+			if(isset($pph)) { echo "<a class='btn btn-danger btn-sm'>{$nama_jenis} ({$kode_akun}-{$kode_jenis})</a>"; }
+		}
+		if ($belanjaid == 4 || $belanjaid == 5) //---> JASA NON KONSTRUKSI
+		{
+			if ($nilai < 1000000) 
+			{
+				$ppn = 0;
+			}
+			if ($nilai >= 1000000) 
+			{
+				$ppn = 100/110 * $nilai * 0.1;
+			}
+			$pph = ($nilai - $ppn) * 0.02; // PPh 23
+			if($ppn>0) { echo "<a class='btn btn-info btn-sm'>PPN (411211-100)</a> "; }
+			if(isset($pph)) { echo "<a class='btn btn-danger btn-sm'>{$nama_jenis} ({$kode_akun}-{$kode_jenis})</a>"; }
+		}
+		/*if ($belanjaid == 5) //---> SEWA BARANG
 		{
 			ECHO "sedang dikerjakan";
-		}
-		if ($belanjaid == 5) //---> SEWA BARANG
-		{
-			ECHO "sedang dikerjakan";
-		}
+		}*/	
 		if ($belanjaid == 6) //---> SEWA GEDUNG / BANGUNAN
 		{
-			ECHO "sedang dikerjakan";
+			if ($nilai < 1000000) 
+			{
+				$ppn = 0;
+			}
+			if ($nilai >= 1000000) 
+			{
+				$ppn = 100/110 * $nilai * 0.1;
+			}
+			$pph = ($nilai - 0.1); // PPh 4 10%
+			if($ppn>0) { echo "<a class='btn btn-info btn-sm'>PPN (411211-100)</a> "; }
+			if(isset($pph)) { echo "<a class='btn btn-danger btn-sm'>{$nama_jenis} ({$kode_akun}-{$kode_jenis})</a>"; }
 		}
 		if ($belanjaid == 7) //---> JASA CATERING
 		{
-			ECHO "sedang dikerjakan";
+			$ppn =0;
+			$pph = ($nilai - $ppn) * 0.02; // PPh 23
+			if(isset($pph)) { echo "<a class='btn btn-danger btn-sm'>{$nama_jenis} ({$kode_akun}-{$kode_jenis})</a>"; }
 		}
 		if ($belanjaid == 8) //---> JASA RESTAURANT
 		{
-			ECHO "sedang dikerjakan";
+			$ppn =0;
+			if ($nilai >= 2000000) 
+			{
+				$pph = ($nilai - $ppn) * 0.015; // PPh 23
+			}
+			if(isset($pph)) { echo "<a class='btn btn-danger btn-sm'>{$nama_jenis} ({$kode_akun}-{$kode_jenis})</a>"; }
 		}
 		
 		endif;
