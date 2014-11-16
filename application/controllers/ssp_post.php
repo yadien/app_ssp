@@ -34,7 +34,7 @@ class Ssp_post extends CI_Controller {
 			$game['template'] = 'newfromadin';								#--- pilihan template. anda bisa pilih twocolumn / onecolumn
 		$game['komponen_top'] = array('beginheader');						#--- Tambahkan html komponen di bagian paling atas halaman / sebelum template
 		$game['komponen_bottom'] = array('beginfooter');
-		$game['interface'] = array('form_ssp2');	
+		$game['interface'] = array('form_ssp3');	
 			$this->load->view('usetemplate',$game);
 		}
 		else // passed validation proceed to post success logic

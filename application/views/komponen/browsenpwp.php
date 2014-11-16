@@ -12,17 +12,19 @@
 				<td>Nama</td>
 				<td>*</td>
 			</tr>
-			<tr>
 			<?php if($browsenpwp->num_rows()==0): ?>
+			<tr>
 				<td colspan=3>Belum ada data</td>
+			</tr>
 			<?php else: ?>
 			<?php foreach($browsenpwp->result() as $row): ?>
+			<tr>
 				<td><?=$row->npwp?></td>
 				<td><?=$row->nama?></td>
 				<td><a data-id="<?=$row->wpid?>" class="btn btn-sm btn-info pilih">pilih</a></td>
+			</tr>
 			<?php endforeach; ?>
 			<?php endif; ?>
-			</tr>
 		</table>
 		<link href="<?=base_url();?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 		<script src="<?=base_url();?>assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
