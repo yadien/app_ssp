@@ -17,12 +17,24 @@ USE `dbssp`;
 
 -- Dumping structure for table dbssp.tbl_belanja
 CREATE TABLE IF NOT EXISTS `tbl_belanja` (
-  `belanjaid` int(2) NOT NULL,
-  `belanja` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `belanjaid` int(2) NOT NULL AUTO_INCREMENT,
+  `belanja` varchar(250) NOT NULL,
+  `jpid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`belanjaid`),
+  KEY `FK_tbl_belanja_tbl_jp` (`jpid`),
+  CONSTRAINT `FK_tbl_belanja_tbl_jp` FOREIGN KEY (`jpid`) REFERENCES `tbl_jp` (`jpid`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
--- Dumping data for table dbssp.tbl_belanja: ~0 rows (approximately)
+-- Dumping data for table dbssp.tbl_belanja: ~6 rows (approximately)
 /*!40000 ALTER TABLE `tbl_belanja` DISABLE KEYS */;
+INSERT INTO `tbl_belanja` (`belanjaid`, `belanja`, `jpid`) VALUES
+	(1, 'Barang', 1),
+	(3, 'Jasa Konstruksi', 4),
+	(4, 'Jasa bukan konstruksi', 8),
+	(5, 'Sewa barang', 8),
+	(6, 'Sewa gedung / bangunan', 3),
+	(7, 'Jasa Catering', 8),
+	(8, 'Jasa Restaurant', 8);
 /*!40000 ALTER TABLE `tbl_belanja` ENABLE KEYS */;
 
 
@@ -68,11 +80,11 @@ INSERT INTO `tbl_jp` (`jpid`, `kd_akun`, `kd_jenis`, `nm_jenis`, `ket`) VALUES
 	(1, '411211', '100', 'PPN', 'Setoran Masa PPN'),
 	(2, '411128', '402', 'PPh Pasal 4(2)', 'PPh Pasal 4 ayat (2) atas Pembelian Tanah dan/atau Bangunan'),
 	(3, '411128', '403', 'PPh Pasal 4(2)', 'PPh Pasal 4 ayat (2) Sewa Tanah dan/atau Bangunan'),
-	(4, '411128', '409', 'PPh Pasal 4(2)', 'Jasa Konstruksi'),
-	(5, '411121', '100', 'PPh Pasal 21', 'Rutin/Bulanan'),
-	(6, '411121', '402', 'PPh Pasal 21', 'Kegiatan'),
-	(7, '411122', '100', 'PPh Pasal 22', 'Pembelian Barang, Pengadaan ATK'),
-	(8, '411124', '100', 'PPh Pasal 23', 'Jasa dan Catering (tidak kena PPN)');
+	(4, '411128', '409', 'PPh Pasal 4(2)', 'PPh Pasal 4 ayat (2) Jasa Konstruksi'),
+	(5, '411121', '100', 'PPh Pasal 21', 'PPh Pasal 21 Rutin/Bulanan'),
+	(6, '411121', '402', 'PPh Pasal 21', 'PPh Pasal 21 Kegiatan'),
+	(7, '411122', '100', 'PPh Pasal 22', 'PPh Pasal 22 Pembelian Barang, Pengadaan ATK'),
+	(8, '411124', '100', 'PPh Pasal 23', 'PPh Pasal 23 Jasa dan Catering ');
 /*!40000 ALTER TABLE `tbl_jp` ENABLE KEYS */;
 
 
@@ -117,10 +129,12 @@ CREATE TABLE IF NOT EXISTS `tbl_pp` (
   `alamat` text NOT NULL,
   `tlp` varchar(25) NOT NULL,
   PRIMARY KEY (`ppid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table dbssp.tbl_pp: ~0 rows (approximately)
 /*!40000 ALTER TABLE `tbl_pp` DISABLE KEYS */;
+INSERT INTO `tbl_pp` (`ppid`, `nama`, `npwp`, `alamat`, `tlp`) VALUES
+	(1, 'DKPP Kota Tangsel', '20.025.203.9-411.000', 'JL. WITANA HARJA ', '9090909');
 /*!40000 ALTER TABLE `tbl_pp` ENABLE KEYS */;
 
 
@@ -154,12 +168,13 @@ CREATE TABLE IF NOT EXISTS `tbl_wp` (
   `nama` varchar(125) NOT NULL,
   `alamat` text NOT NULL,
   PRIMARY KEY (`wpid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table dbssp.tbl_wp: ~1 rows (approximately)
 /*!40000 ALTER TABLE `tbl_wp` DISABLE KEYS */;
 INSERT INTO `tbl_wp` (`wpid`, `npwp`, `nama`, `alamat`) VALUES
-	(1, '71.157.929.2-014.000', 'Ahmad Alimuddin', 'Jl Bangka V No. 28 ');
+	(1, '71.157.929.2-014.000', 'Ahmad Alimuddin', 'Jl Bangka V No. 28 '),
+	(2, '20.025.203.9-411.000', 'DKPP KOTA TANGSEL', 'JL WITANA HARJA');
 /*!40000 ALTER TABLE `tbl_wp` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
